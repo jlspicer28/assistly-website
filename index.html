@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Assistly · Indian Hill's Student Job Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ─── Tokens ───────────────────────────────────── */
+:root {
+  --red:     #C62828;
+  --red-mid: #D32F2F;
+  --ink:     #111111;
+  --ink-2:   #444444;
+  --ink-3:   #888888;
+  --line:    #E4E4E4;
+  --surface: #F6F6F6;
+  --white:   #FFFFFF;
+  --radius:  10px;
+  --max:     1040px;
+}
+
+/* ─── Reset ────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ─── Nav ──────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none;
+}
+.nav-mark {
+  width: 28px; height: 28px;
+  background: var(--red);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-mark svg { width: 15px; height: 15px; color: #fff; }
+.nav-name {
+  font-family: "Outfit", sans-serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--ink); letter-spacing: -0.2px;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 2px;
+}
+.nav-link {
+  font-size: 13.5px; font-weight: 500;
+  color: var(--ink-2); text-decoration: none;
+  padding: 6px 13px; border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-link:hover { background: var(--surface); color: var(--ink); }
+.nav-cta {
+  margin-left: 8px;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--white); text-decoration: none;
+  background: var(--ink);
+  padding: 7px 18px; border-radius: 7px;
+  transition: background 0.15s;
+}
+.nav-cta:hover { background: var(--red); }
+
+/* ─── Hero ─────────────────────────────────────── */
+.hero {
+  padding: 136px 40px 88px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 36px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: 12px; font-weight: 600; color: var(--ink-2);
+  letter-spacing: 0.2px;
+}
+.eyebrow-divider { width: 1px; height: 14px; background: var(--line); }
+.eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--red); border-radius: 50%;
+}
+.ih-logo-img { height: 22px; width: auto; display: block; }
+h1 {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(36px, 5.5vw, 66px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  max-width: 720px;
+  margin: 0 auto 20px;
+}
+h1 em { font-style: normal; color: var(--red); }
+.hero-sub {
+  font-size: 17px; font-weight: 400;
+  color: var(--ink-3); line-height: 1.7;
+  max-width: 480px; margin: 0 auto 40px;
+}
+.hero-actions {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px; font-weight: 600;
+  text-decoration: none;
+  padding: 12px 26px; border-radius: 8px;
+  transition: all 0.15s;
+  letter-spacing: -0.1px;
+}
+.btn-red { background: var(--red); color: #fff; }
+.btn-red:hover { background: var(--red-mid); }
+.btn-ghost {
+  color: var(--ink-3); background: transparent;
+  border: 1.5px solid var(--line);
+}
+.btn-ghost:hover { border-color: var(--ink-3); color: var(--ink); }
+.btn svg { width: 14px; height: 14px; }
+.hero-micro {
+  margin-top: 6px;
+  font-size: 12px; color: var(--ink-3);
+}
+.hero-micro a { color: var(--red); text-decoration: none; font-weight: 500; }
+
+/* ─── Trust strip ──────────────────────────────── */
+.trust {
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+.trust-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center;
+  padding: 0 40px;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12.5px; font-weight: 500; color: var(--ink-3);
+  padding: 14px 24px 14px 0;
+  margin-right: 24px;
+  border-right: 1px solid var(--line);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.trust-item:last-child { border-right: none; margin-right: 0; }
+.trust-item svg { width: 13px; height: 13px; color: var(--red); flex-shrink: 0; }
+
+/* ─── Section shell ────────────────────────────── */
+.section { padding: 88px 40px; border-bottom: 1px solid var(--line); }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 14px;
+}
+h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 800; line-height: 1.08;
+  letter-spacing: -1.5px;
+  color: var(--ink);
+}
+.section-sub {
+  font-size: 15px; color: var(--ink-3); line-height: 1.7;
+  max-width: 480px; margin-top: 10px;
+}
+
+/* ─── School photo ─────────────────────────────── */
+.school-section {
+  padding: 72px 40px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.school-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 64px; align-items: center;
+}
+.school-copy .label { margin-bottom: 10px; }
+.school-copy h2 { margin-bottom: 12px; }
+.school-copy p {
+  font-size: 15px; line-height: 1.75;
+  color: var(--ink-2); max-width: 380px; margin-top: 12px;
+}
+.school-copy p + p { margin-top: 10px; }
+.school-frames { display: flex; flex-direction: column; gap: 12px; }
+.school-district-logo {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.school-district-logo img { height: 36px; width: auto; }
+.school-district-logo span { font-size: 11px; color: var(--ink-3); font-weight: 500; }
+.school-frame {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  aspect-ratio: 4/3;
+  background: var(--surface);
+  position: relative;
+}
+.school-frame.school-frame-wide {
+  aspect-ratio: 16/7;
+}
+.school-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.school-frame-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+  font-size: 11px; font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.2px;
+}
+
+/* ─── How it works ─────────────────────────────── */
+.steps {
+  margin-top: 52px;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.step {
+  padding: 28px 24px;
+  border-right: 1px solid var(--line);
+}
+.step:last-child { border-right: none; }
+.step-n {
+  font-family: "Outfit", sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 20px;
+}
+.step-icon {
+  width: 36px; height: 36px;
+  background: var(--surface); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.step-icon svg { width: 18px; height: 18px; color: var(--ink); }
+.step h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--ink); margin-bottom: 8px; letter-spacing: -0.2px;
+}
+.step p { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+
+/* ─── Students / Families ──────────────────────── */
+.cards-section {
+  padding: 88px 40px;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+.cards-inner { max-width: var(--max); margin: 0 auto; }
+.cards-header { margin-bottom: 40px; }
+.cards-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.card {
+  border-radius: 14px; padding: 36px 32px;
+  border: 1px solid var(--line);
+}
+.card.dark { background: var(--ink); border-color: transparent; }
+.card.light { background: var(--white); }
+.card-tag {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.card.dark .card-tag { color: rgba(255,255,255,0.35); }
+.card.light .card-tag { color: var(--red); }
+.card h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 10px;
+}
+.card.dark h3 { color: #fff; }
+.card.light h3 { color: var(--ink); }
+.card > p {
+  font-size: 14px; line-height: 1.7; margin-bottom: 28px;
+}
+.card.dark > p { color: rgba(255,255,255,0.5); }
+.card.light > p { color: var(--ink-3); }
+.card-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 30px;
+}
+.card-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13.5px; font-weight: 500;
+}
+.card.dark .card-list li { color: rgba(255,255,255,0.65); }
+.card.light .card-list li { color: var(--ink); }
+.card-list li svg { width: 14px; height: 14px; flex-shrink: 0; }
+.card.dark .card-list li svg { color: rgba(255,255,255,0.3); }
+.card.light .card-list li svg { color: var(--red); }
+.card-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: "Inter", sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  text-decoration: none;
+  padding: 10px 20px; border-radius: 7px;
+  transition: all 0.15s;
+}
+.card.dark .card-btn { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+.card.dark .card-btn:hover { background: rgba(255,255,255,0.17); }
+.card.light .card-btn { background: var(--red); color: #fff; }
+.card.light .card-btn:hover { background: var(--red-mid); }
+
+/* ─── Safety ───────────────────────────────────── */
+.safety-section { padding: 88px 40px; border-bottom: 1px solid var(--line); }
+.safety-inner { max-width: var(--max); margin: 0 auto; }
+.safety-header { margin-bottom: 48px; }
+.safety-list {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.safety-item {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.safety-item:nth-child(2n) { border-right: none; }
+.safety-item:nth-last-child(-n+2) { border-bottom: none; }
+.safety-num {
+  font-family: "Outfit", sans-serif;
+  font-size: 12px; font-weight: 700;
+  color: var(--ink-3); letter-spacing: 0.5px;
+  padding-top: 2px; flex-shrink: 0; min-width: 20px;
+}
+.safety-item h4 {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--ink); margin-bottom: 5px; letter-spacing: -0.2px;
+}
+.safety-item p { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+
+/* ─── CTA ──────────────────────────────────────── */
+.cta-section {
+  padding: 96px 40px;
+  background: var(--ink);
+}
+.cta-inner {
+  max-width: 580px; margin: 0 auto;
+  text-align: center;
+}
+.cta-inner .label { color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+.cta-inner h2 {
+  color: #fff; margin-bottom: 12px;
+  font-size: clamp(28px, 3.8vw, 46px);
+}
+.cta-inner p { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 36px; }
+.cta-inner .btn-red { font-size: 15px; padding: 14px 30px; }
+.cta-legal { margin-top: 16px; font-size: 11.5px; color: rgba(255,255,255,0.2); }
+.cta-legal a { color: rgba(255,255,255,0.35); text-decoration: underline; }
+
+/* ─── Footer ───────────────────────────────────── */
+footer {
+  padding: 28px 40px;
+  background: #0D0D0D;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-brand {
+  display: flex; align-items: center; gap: 8px; text-decoration: none;
+}
+.footer-mark {
+  width: 22px; height: 22px; background: var(--red); border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+}
+.footer-mark svg { width: 11px; height: 11px; color: #fff; }
+.footer-name {
+  font-family: "Outfit", sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,0.6);
+}
+.footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.footer-link {
+  font-size: 12px; color: rgba(255,255,255,0.28);
+  text-decoration: none; transition: color 0.15s;
+}
+.footer-link:hover { color: rgba(255,255,255,0.65); }
+.footer-copy {
+  width: 100%;
+  font-size: 11px; color: rgba(255,255,255,0.18);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 16px; margin-top: 4px;
+}
+.footer-copy a { color: rgba(255,255,255,0.18); text-decoration: none; }
+
+/* ─── Responsive ───────────────────────────────── */
+@media (max-width: 860px) {
+  nav { padding: 0 20px; }
+  .nav-links .nav-link { display: none; }
+  .hero { padding: 100px 20px 64px; }
+  .trust-inner { padding: 0 20px; }
+  .section { padding: 64px 20px; }
+  .school-section { padding: 56px 20px; }
+  .school-inner { grid-template-columns: 1fr; gap: 40px; }
+  .school-frames { max-width: 480px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .step:nth-child(2) { border-right: none; }
+  .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .cards-section { padding: 64px 20px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .safety-section { padding: 64px 20px; }
+  .safety-list { grid-template-columns: 1fr; }
+  .safety-item { border-right: none !important; }
+  .safety-item:last-child { border-bottom: none; }
+  .safety-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .safety-item:last-child { border-bottom: none; }
+  .cta-section { padding: 64px 20px; }
+  footer { padding: 24px 20px; }
+}
+@media (max-width: 600px) {
+  .steps { grid-template-columns: 1fr; }
+  .step { border-right: none !important; border-bottom: 1px solid var(--line) !important; }
+  .step:last-child { border-bottom: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-mark">
+      <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M7.5 2.5c0 0-4 2-4 5.5a4 4 0 008 0c0-3.5-4-5.5-4-5.5z"/>
+        <path d="M7.5 8v4"/>
+      </svg>
+    </div>
+    <span class="nav-name">Assistly</span>
+  </a>
+  <div class="nav-links">
+    <a href="#how-it-works" class="nav-link">How it works</a>
+    <a href="#students" class="nav-link">Students</a>
+    <a href="#families" class="nav-link">Families</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="#get-started" class="nav-cta">Get started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="eyebrow-dot"></span>
+    Assistly
+    <span class="eyebrow-divider"></span>
+    <img src="https://www.ih.k12.oh.us/resources/images/svg/footer_logo.svg" alt="Indian Hill School District" class="ih-logo-img">
+  </div>
+
+  <h1>The easiest way to find<br><em>trusted student help.</em></h1>
+  <p class="hero-sub">
+    Assistly connects Indian Hill families with school-verified students for babysitting, errands, yard work, and more — all within your community.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#get-started" class="btn btn-red">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 1v12M1 7l6-6 6 6"/></svg>
+      Get started with your school email
+    </a>
+    <a href="#get-started" class="btn btn-ghost">Already have an account? Log in</a>
+    <p class="hero-micro">Students sign in with <strong>@ihsd.us</strong> · <a href="#how-it-works">Learn how it works →</a></p>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M7 1l1.5 3h3l-2.5 2 1 3L7 7.5 4 9l1-3L2.5 4h3z"/></svg>
+      School-verified students
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M7 1l5 2v4c0 3.5-5 6-5 6S2 10.5 2 7V3l5-2z"/></svg>
+      Background-checked families
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M2 10V6a5 5 0 0110 0v4"/><rect x="1" y="9" width="12" height="5" rx="1"/></svg>
+      Admin-approved accounts
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 9l3.5 3.5L13 3"/></svg>
+      Safe, post-match messaging
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="7" cy="7" r="6"/><path d="M4.5 7h5M7 4.5v5"/></svg>
+      Indian Hill community only
+    </div>
+  </div>
+</div>
+
+<!-- SCHOOL PHOTO -->
+<section class="school-section">
+  <div class="school-inner">
+    <div class="school-copy">
+      <p class="label">Our community</p>
+      <h2>Built for Indian Hill, by Indian Hill.</h2>
+      <p>
+        Assistly is purpose-built for the Indian Hill School District. Every account — student or family — is verified to be part of the community before access is granted.
+      </p>
+      <p>
+        Students earn real income doing work they're capable of. Families get help from neighbors they can actually trust. Everyone stays safe.
+      </p>
+      <div class="school-district-logo">
+        <img src="https://www.ih.k12.oh.us/resources/images/svg/footer_logo.svg" alt="Indian Hill School District">
+        <span>Indian Hill Exempted Village School District</span>
+      </div>
+    </div>
+    <div class="school-frames">
+      <div class="school-frame">
+        <img
+          src="https://imagescdn.homes.com/i2/waBl0Fx-hxCr73JUGituH_E9UpjO38ee6Kr40CRguhU/117/indian-hill-high-school-cincinnati-oh-primaryphoto.jpg?p=1"
+          alt="Indian Hill High School campus"
+          loading="lazy"
+        >
+        <div class="school-frame-caption">Indian Hill High School · Cincinnati, OH</div>
+      </div>
+      <div class="school-frame school-frame-wide">
+        <img
+          src="https://cincinnatidesignawards.com/wp-content/uploads/2024/09/indianhill-CDA-1.jpg"
+          alt="Indian Hill School District"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="section-inner">
+    <p class="label">How it works</p>
+    <h2>Up and running in four steps.</h2>
+    <p class="section-sub">Designed to be safe at every stage — not just at signup.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M10 2a4 4 0 100 8 4 4 0 000-8zM2 18a8 8 0 0116 0"/></svg>
+        </div>
+        <h3>Create your account</h3>
+        <p>Students sign up with their @ihsd.us email. Families use any email. Every account is reviewed by an admin before access is granted.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="3" y="4" width="14" height="14" rx="2"/><path d="M13 2v4M7 2v4M3 10h14"/></svg>
+        </div>
+        <h3>Families post tasks</h3>
+        <p>Post babysitting, yard work, errands, or tutoring with the date, time, and pay. Background-checked families only.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="M17 17l-3.5-3.5"/></svg>
+        </div>
+        <h3>Students browse and apply</h3>
+        <p>Approved students browse open tasks and apply for the ones that match their schedule and skills.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M18 13a2 2 0 01-2 2H6l-4 4V5a2 2 0 012-2h12a2 2 0 012 2v8z"/></svg>
+        </div>
+        <h3>Get matched, connect safely</h3>
+        <p>When a family selects a student, in-app messaging opens. Payment is arranged directly between them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENTS / FAMILIES -->
+<section class="cards-section" id="students">
+  <div class="cards-inner">
+    <div class="cards-header">
+      <p class="label">Who it's for</p>
+      <h2>Designed for both sides.</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card dark">
+        <p class="card-tag">For students</p>
+        <h3>Earn on your own schedule.</h3>
+        <p>Do work you're already capable of, for neighbors you already share a community with.</p>
+        <ul class="card-list">
+          <li>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+            Sign up with your @ihsd.us email
+          </li>
+          <li>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+            Browse tasks that fit your skills
+          </li>
+          <li>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+            Work with vetted, trusted families
+          </li>
+          <li>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+            Build your profile and earn reviews
+          </li>
+        </ul>
+        <a href="#get-started" class="card-btn">Sign up as a student →</a>
+      </div>
+
+      <div class="card light" id="families">
+        <p class="card-tag">For families</p>
+        <h3>Get trusted help, nearby.</h3>
+        <p>Hire from a pool of motivated, school-verified students — people already part of your community.</p>
+        <ul class="card-list">
+          <li>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+            Post any task in minutes
+          </li>
+          <li>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+            Review student profiles and ratings
+          </li>
+          <li>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+            Message safely after a match
+          </li>
+          <li>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+            Pay your way — cash, Venmo, Zelle
+          </li>
+        </ul>
+        <a href="#get-started" class="card-btn">Sign up as a family →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section class="safety-section">
+  <div class="safety-inner">
+    <div class="safety-header">
+      <p class="label">Safety</p>
+      <h2>Every safeguard, explained.</h2>
+      <p class="section-sub">Safety isn't a feature — it's the foundation Assistly is built on.</p>
+    </div>
+    <div class="safety-list">
+      <div class="safety-item">
+        <span class="safety-num">01</span>
+        <div>
+          <h4>Admin-approved accounts</h4>
+          <p>Every student and family is manually reviewed before they can access the platform. No anonymous users, ever.</p>
+        </div>
+      </div>
+      <div class="safety-item">
+        <span class="safety-num">02</span>
+        <div>
+          <h4>School email verification</h4>
+          <p>Students must sign up with their @ihsd.us email, confirming they're a current member of the district.</p>
+        </div>
+      </div>
+      <div class="safety-item">
+        <span class="safety-num">03</span>
+        <div>
+          <h4>Background-checked families</h4>
+          <p>Families complete a third-party background check before they're allowed to post tasks or contact students.</p>
+        </div>
+      </div>
+      <div class="safety-item">
+        <span class="safety-num">04</span>
+        <div>
+          <h4>Post-match messaging only</h4>
+          <p>Students and families can't contact each other until a match is confirmed — all messages stay on-platform.</p>
+        </div>
+      </div>
+      <div class="safety-item">
+        <span class="safety-num">05</span>
+        <div>
+          <h4>Report and flag system</h4>
+          <p>Any user, post, or message can be flagged. Admins review every report and can remove content immediately.</p>
+        </div>
+      </div>
+      <div class="safety-item">
+        <span class="safety-num">06</span>
+        <div>
+          <h4>Parent consent for minors</h4>
+          <p>Students who need parental consent must have signed forms on file before their account is activated.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="get-started">
+  <div class="cta-inner">
+    <p class="label">Get started</p>
+    <h2>Your community is waiting.</h2>
+    <p>Students — sign up with your @ihsd.us email. Families — post your first task in minutes.</p>
+    <a href="/signup" class="btn btn-red">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 1v12M1 7l6-6 6 6"/></svg>
+      Create your account
+    </a>
+    <p class="cta-legal">
+      By signing up you agree to our
+      <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-brand">
+      <div class="footer-mark">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M7.5 2.5c0 0-4 2-4 5.5a4 4 0 008 0c0-3.5-4-5.5-4-5.5z"/>
+          <path d="M7.5 8v4"/>
+        </svg>
+      </div>
+      <span class="footer-name">Assistly</span>
+    </a>
+    <div class="footer-links">
+      <a href="#how-it-works" class="footer-link">How it works</a>
+      <a href="#students" class="footer-link">Students</a>
+      <a href="#families" class="footer-link">Families</a>
+      <a href="about.html" class="footer-link">About</a>
+      <a href="/terms" class="footer-link">Terms</a>
+      <a href="/privacy" class="footer-link">Privacy</a>
+      <a href="mailto:support@assistlyconnect.org" class="footer-link">Contact</a>
+    </div>
+    <p class="footer-copy">
+      © 2026 Assistly · Indian Hill High School District · AssistlyConnect.org
+    </p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>
