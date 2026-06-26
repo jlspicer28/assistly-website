@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Create Account · Assistly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --red:     #C62828;
+  --red-mid: #D32F2F;
+  --ink:     #111111;
+  --ink-2:   #444444;
+  --ink-3:   #888888;
+  --line:    #E4E4E4;
+  --surface: #F6F6F6;
+  --white:   #FFFFFF;
+  --radius:  10px;
+  --max:     1040px;
+  --green:   #2D6A4F;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--surface);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+a { color: inherit; }
+
+/* ─── Nav ──────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none;
+}
+.nav-mark {
+  width: 28px; height: 28px;
+  background: var(--red);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-mark svg { width: 15px; height: 15px; color: #fff; }
+.nav-name {
+  font-family: "Outfit", sans-serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--ink); letter-spacing: -0.2px;
+}
+.nav-right {
+  font-size: 13.5px; color: var(--ink-3);
+}
+.nav-right a { color: var(--red); font-weight: 500; text-decoration: none; }
+
+/* ─── Page shell ───────────────────────────────── */
+.page {
+  min-height: 100vh;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 96px 20px 60px;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%; max-width: 460px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+/* ─── Header ───────────────────────────────────── */
+.card-header { margin-bottom: 28px; }
+.card-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 8px;
+}
+.card-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 26px; font-weight: 800;
+  color: var(--ink); letter-spacing: -0.8px; line-height: 1.1;
+  margin-bottom: 6px;
+}
+.card-sub {
+  font-size: 14px; color: var(--ink-3); line-height: 1.6;
+}
+
+/* ─── Role tabs ────────────────────────────────── */
+.role-tabs {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-bottom: 24px;
+}
+.role-tab {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 14px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.role-tab.active {
+  border-color: var(--red);
+  background: #FFF5F5;
+}
+.role-tab-icon {
+  font-size: 20px;
+}
+.role-tab-label {
+  font-size: 13px; font-weight: 600; color: var(--ink-2);
+}
+.role-tab.active .role-tab-label { color: var(--red); }
+.role-tab-note {
+  font-size: 11px; color: var(--ink-3); text-align: center; line-height: 1.4;
+}
+.role-tab.active .role-tab-note { color: var(--red); opacity: 0.7; }
+
+/* ─── Form ─────────────────────────────────────── */
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 14px;
+}
+.field { margin-bottom: 14px; }
+.field:last-of-type { margin-bottom: 0; }
+label {
+  display: block;
+  font-size: 11.5px; font-weight: 600;
+  color: var(--ink-2); margin-bottom: 5px;
+  letter-spacing: 0.2px;
+}
+input {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: 14px; color: var(--ink);
+  padding: 10px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+}
+input:focus { border-color: var(--red); }
+input.error { border-color: #E53935; }
+input::placeholder { color: var(--ink-3); }
+.field-error {
+  font-size: 11.5px; color: #C62828;
+  margin-top: 4px; display: none;
+}
+.field-note {
+  font-size: 11.5px; color: var(--ink-3);
+  margin-top: 4px;
+}
+
+/* ─── Divider ──────────────────────────────────── */
+.divider {
+  border: none; border-top: 1px solid var(--line);
+  margin: 20px 0;
+}
+
+/* ─── Submit ───────────────────────────────────── */
+.submit-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: 15px; font-weight: 600; color: #fff;
+  background: var(--red);
+  border: none; border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.15s, opacity 0.15s;
+}
+.submit-btn:hover { background: var(--red-mid); }
+.submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Global error ─────────────────────────────── */
+.global-error {
+  background: #FFF5F5;
+  border: 1px solid #FFCDD2;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px; color: #C62828; line-height: 1.5;
+  margin-top: 14px;
+  display: none;
+}
+
+/* ─── Success ──────────────────────────────────── */
+.success-state {
+  display: none;
+  text-align: center; padding: 8px 0;
+}
+.success-icon {
+  width: 64px; height: 64px;
+  background: #D8F3DC; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.success-icon svg { width: 30px; height: 30px; color: var(--green); }
+.success-state h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 22px; font-weight: 800;
+  color: var(--ink); letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.success-state p {
+  font-size: 14px; color: var(--ink-3); line-height: 1.65;
+  margin-bottom: 20px;
+}
+.success-note {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 13px; color: var(--ink-2); line-height: 1.55;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.success-note strong { color: var(--ink); }
+.app-store-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--ink); color: #fff;
+  text-decoration: none;
+  padding: 13px 24px; border-radius: 10px;
+  font-size: 14px; font-weight: 600;
+  transition: background 0.15s;
+}
+.app-store-btn:hover { background: #333; }
+.app-store-btn svg { width: 18px; height: 18px; }
+
+/* ─── Login link ───────────────────────────────── */
+.login-link {
+  margin-top: 18px; text-align: center;
+  font-size: 13px; color: var(--ink-3);
+}
+.login-link a {
+  color: var(--red); font-weight: 500; text-decoration: none;
+}
+
+/* ─── Legal ────────────────────────────────────── */
+.legal {
+  font-size: 11.5px; color: var(--ink-3);
+  text-align: center; margin-top: 16px; line-height: 1.6;
+}
+.legal a { color: var(--ink-3); text-decoration: underline; }
+
+/* ─── Footer ───────────────────────────────────── */
+footer {
+  padding: 24px 40px;
+  background: #0D0D0D;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+.footer-copy {
+  font-size: 11px; color: rgba(255,255,255,0.18);
+}
+.footer-copy a { color: rgba(255,255,255,0.18); text-decoration: none; }
+
+@media (max-width: 600px) {
+  nav { padding: 0 16px; }
+  .card { padding: 28px 20px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .form-row .field { margin-bottom: 14px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-mark">
+      <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M7.5 2.5c0 0-4 2-4 5.5a4 4 0 008 0c0-3.5-4-5.5-4-5.5z"/>
+        <path d="M7.5 8v4"/>
+      </svg>
+    </div>
+    <span class="nav-name">Assistly</span>
+  </a>
+  <div class="nav-right">
+    Already have an account? <a href="/">Sign in</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="card">
+
+    <!-- Form state -->
+    <div id="formState">
+      <div class="card-header">
+        <p class="card-label">Indian Hill Community</p>
+        <p class="card-title">Create your account.</p>
+        <p class="card-sub">Join Assistly — the private job network for Indian Hill students and families.</p>
+      </div>
+
+      <!-- Role tabs -->
+      <div class="role-tabs" role="group" aria-label="Account type">
+        <div class="role-tab active" id="tabStudent" onclick="setRole('student')" role="button" tabindex="0">
+          <span class="role-tab-icon">🎓</span>
+          <span class="role-tab-label">I'm a student</span>
+          <span class="role-tab-note">@ihsd.us email required</span>
+        </div>
+        <div class="role-tab" id="tabFamily" onclick="setRole('family')" role="button" tabindex="0">
+          <span class="role-tab-icon">🏠</span>
+          <span class="role-tab-label">I'm a family</span>
+          <span class="role-tab-note">Post tasks & hire</span>
+        </div>
+      </div>
+
+      <form id="signupForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" placeholder="Jane" autocomplete="given-name">
+            <p class="field-error" id="firstNameErr">Required</p>
+          </div>
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" placeholder="Smith" autocomplete="family-name">
+            <p class="field-error" id="lastNameErr">Required</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email" id="emailLabel">School email</label>
+          <input type="email" id="email" placeholder="jane@ihsd.us" autocomplete="email">
+          <p class="field-note" id="emailNote">Must end in @ihsd.us</p>
+          <p class="field-error" id="emailErr">Enter a valid @ihsd.us email</p>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone <span style="color:var(--ink-3);font-weight:400">(optional)</span></label>
+          <input type="tel" id="phone" placeholder="(513) 555-0100" autocomplete="tel">
+        </div>
+
+        <hr class="divider">
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="8+ characters" autocomplete="new-password">
+          <p class="field-error" id="passwordErr">Password must be at least 8 characters</p>
+        </div>
+
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <input type="password" id="confirm" placeholder="" autocomplete="new-password">
+          <p class="field-error" id="confirmErr">Passwords don't match</p>
+        </div>
+
+        <div class="global-error" id="globalErr"></div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <div class="spinner" id="spinner"></div>
+          <span id="submitLabel">Create account</span>
+        </button>
+
+        <p class="legal">
+          By creating an account you agree to our
+          <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
+        </p>
+      </form>
+
+      <p class="login-link">Already have an account? <a href="/">Sign in in the app</a></p>
+    </div>
+
+    <!-- Success state -->
+    <div class="success-state" id="successState">
+      <div class="success-icon">
+        <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M4 16l8 8L26 6"/>
+        </svg>
+      </div>
+      <h2>Account created!</h2>
+      <p>Your account is pending approval. An admin will review and activate it shortly — you'll be notified by email.</p>
+      <div class="success-note">
+        <strong>Next step:</strong> Download the Assistly app on your iPhone to sign in and get started once your account is approved.
+      </div>
+      <a href="https://apps.apple.com/us/app/assistly/id6746823559" class="app-store-btn">
+        <svg viewBox="0 0 18 18" fill="currentColor"><path d="M11.22 3.06c.76-.92 1.28-2.2 1.14-3.5-1.1.06-2.44.76-3.23 1.7-.7.81-1.32 2.13-1.15 3.38 1.22.1 2.47-.62 3.24-1.58zM12.35 4.9c-1.8-.11-3.33 1.02-4.19 1.02-.87 0-2.18-.97-3.6-.94C2.78 5.02 1.1 6.05.36 7.67c-1.5 2.6-.4 6.46 1.07 8.57.7 1.04 1.55 2.18 2.66 2.14 1.06-.04 1.48-.68 2.78-.68 1.29 0 1.67.68 2.79.66 1.14-.02 1.86-1.04 2.57-2.08.8-1.18 1.13-2.33 1.15-2.39-.02-.02-2.21-.85-2.23-3.38-.02-2.11 1.72-3.12 1.8-3.18-.98-1.46-2.5-1.62-3.06-1.66l.46.02z"/></svg>
+        Download on the App Store
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p class="footer-copy">© 2026 Assistly · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
+</footer>
+
+<script>
+const API = 'https://assistly-backend-8ain.onrender.com';
+let role = 'student';
+
+function setRole(r) {
+  role = r;
+  document.getElementById('tabStudent').classList.toggle('active', r === 'student');
+  document.getElementById('tabFamily').classList.toggle('active', r === 'family');
+  const emailLabel = document.getElementById('emailLabel');
+  const emailNote  = document.getElementById('emailNote');
+  const emailInput = document.getElementById('email');
+  if (r === 'student') {
+    emailLabel.textContent = 'School email';
+    emailNote.textContent = 'Must end in @ihsd.us';
+    emailInput.placeholder = 'jane@ihsd.us';
+  } else {
+    emailLabel.textContent = 'Email address';
+    emailNote.textContent = '';
+    emailInput.placeholder = 'jane@example.com';
+  }
+}
+
+// Tab keyboard support
+document.querySelectorAll('.role-tab').forEach(tab => {
+  tab.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      tab.click();
+    }
+  });
+});
+
+function showError(fieldId, errId, msg) {
+  const el = document.getElementById(fieldId);
+  const err = document.getElementById(errId);
+  el.classList.add('error');
+  if (msg) err.textContent = msg;
+  err.style.display = 'block';
+  return false;
+}
+
+function clearErrors() {
+  document.querySelectorAll('input').forEach(i => i.classList.remove('error'));
+  document.querySelectorAll('.field-error').forEach(e => e.style.display = 'none');
+  const ge = document.getElementById('globalErr');
+  ge.style.display = 'none'; ge.textContent = '';
+}
+
+function validate() {
+  clearErrors();
+  let ok = true;
+  const fn = document.getElementById('firstName').value.trim();
+  const ln = document.getElementById('lastName').value.trim();
+  const em = document.getElementById('email').value.trim().toLowerCase();
+  const pw = document.getElementById('password').value;
+  const cf = document.getElementById('confirm').value;
+
+  if (!fn) ok = showError('firstName', 'firstNameErr', 'Required');
+  if (!ln) ok = showError('lastName',  'lastNameErr',  'Required');
+
+  if (!em) {
+    ok = showError('email', 'emailErr', 'Email is required');
+  } else if (role === 'student' && !em.endsWith('@ihsd.us')) {
+    ok = showError('email', 'emailErr', 'Students must use their @ihsd.us school email');
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
+    ok = showError('email', 'emailErr', 'Enter a valid email address');
+  }
+
+  if (pw.length < 8) ok = showError('password', 'passwordErr', 'Password must be at least 8 characters');
+  else if (pw !== cf) ok = showError('confirm', 'confirmErr', "Passwords don't match");
+
+  return ok;
+}
+
+function setLoading(on) {
+  const btn = document.getElementById('submitBtn');
+  const spinner = document.getElementById('spinner');
+  const label = document.getElementById('submitLabel');
+  btn.disabled = on;
+  spinner.style.display = on ? 'block' : 'none';
+  label.textContent = on ? 'Creating account…' : 'Create account';
+}
+
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  if (!validate()) return;
+
+  setLoading(true);
+
+  const body = {
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName:  document.getElementById('lastName').value.trim(),
+    email:     document.getElementById('email').value.trim().toLowerCase(),
+    phone:     document.getElementById('phone').value.trim() || undefined,
+    password:  document.getElementById('password').value,
+    role:      role === 'student' ? 'worker' : 'poster',
+  };
+
+  try {
+    const res = await fetch(`${API}/api/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+
+    if (data.alreadyExists) {
+      const ge = document.getElementById('globalErr');
+      ge.textContent = 'An account with this email already exists. Please sign in through the app.';
+      ge.style.display = 'block';
+      setLoading(false);
+      return;
+    }
+
+    if (data.error) {
+      const ge = document.getElementById('globalErr');
+      ge.textContent = data.error;
+      ge.style.display = 'block';
+      setLoading(false);
+      return;
+    }
+
+    if (data.success || data.token) {
+      document.getElementById('formState').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+      return;
+    }
+
+    throw new Error('Unexpected response');
+  } catch (err) {
+    const ge = document.getElementById('globalErr');
+    ge.textContent = 'Something went wrong. Please try again or email support@assistlyconnect.org.';
+    ge.style.display = 'block';
+    setLoading(false);
+  }
+});
+</script>
+</body>
+</html>

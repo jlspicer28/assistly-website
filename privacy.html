@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy · Assistly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:     #C62828;
+  --ink:     #111111;
+  --ink-2:   #444444;
+  --ink-3:   #888888;
+  --line:    #E4E4E4;
+  --surface: #F6F6F6;
+  --white:   #FFFFFF;
+  --max:     1040px;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: "Inter", sans-serif; background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; }
+a { color: var(--red); }
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.nav-mark { width: 28px; height: 28px; background: var(--red); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.nav-mark svg { width: 15px; height: 15px; color: #fff; }
+.nav-name { font-family: "Outfit", sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.2px; }
+.nav-back { font-size: 13.5px; color: var(--ink-3); text-decoration: none; }
+.nav-back:hover { color: var(--ink); }
+
+.wrapper { max-width: 720px; margin: 0 auto; padding: 100px 40px 80px; }
+.doc-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+.doc-title { font-family: "Outfit", sans-serif; font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -1.5px; color: var(--ink); margin-bottom: 8px; line-height: 1.07; }
+.doc-date { font-size: 13px; color: var(--ink-3); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+
+.doc-body h2 { font-family: "Outfit", sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); margin: 36px 0 10px; letter-spacing: -0.3px; }
+.doc-body p { font-size: 14.5px; color: var(--ink-2); line-height: 1.8; margin-bottom: 14px; }
+.doc-body ul { padding-left: 20px; margin-bottom: 14px; }
+.doc-body ul li { font-size: 14.5px; color: var(--ink-2); line-height: 1.8; margin-bottom: 6px; }
+.doc-body strong { color: var(--ink); font-weight: 600; }
+.doc-body a { color: var(--red); }
+
+.data-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+.data-table th { background: var(--surface); font-size: 12px; font-weight: 600; color: var(--ink-2); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.data-table td { font-size: 13.5px; color: var(--ink-2); padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+
+footer { padding: 24px 40px; background: #0D0D0D; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); }
+.footer-copy a { color: rgba(255,255,255,0.18); text-decoration: none; }
+
+@media (max-width: 600px) { nav { padding: 0 16px; } .wrapper { padding: 80px 20px 60px; } footer { padding: 20px 16px; } .data-table th, .data-table td { padding: 8px 10px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">
+    <div class="nav-mark">
+      <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M7.5 2.5c0 0-4 2-4 5.5a4 4 0 008 0c0-3.5-4-5.5-4-5.5z"/>
+        <path d="M7.5 8v4"/>
+      </svg>
+    </div>
+    <span class="nav-name">Assistly</span>
+  </a>
+  <a href="/" class="nav-back">← Back to home</a>
+</nav>
+
+<div class="wrapper">
+  <p class="doc-label">Legal</p>
+  <h1 class="doc-title">Privacy Policy</h1>
+  <p class="doc-date">Last updated: June 26, 2026</p>
+
+  <div class="doc-body">
+
+    <p>Assistly ("we," "our," or "us") is committed to protecting the privacy of our users, especially minors. This Privacy Policy explains what information we collect, how we use it, and your rights regarding that information. By using Assistly, you agree to the practices described here.</p>
+
+    <h2>1. Information We Collect</h2>
+    <p>We collect the following categories of information:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Examples</th>
+          <th>How collected</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Account information</strong></td>
+          <td>Name, email address, phone number, password (hashed)</td>
+          <td>You provide this at signup</td>
+        </tr>
+        <tr>
+          <td><strong>Profile data</strong></td>
+          <td>Age, bio, skills, profile photo, zip code</td>
+          <td>You provide this optionally</td>
+        </tr>
+        <tr>
+          <td><strong>Job and activity data</strong></td>
+          <td>Job listings created, applications submitted, jobs completed, reviews given and received</td>
+          <td>Generated through platform use</td>
+        </tr>
+        <tr>
+          <td><strong>Messages</strong></td>
+          <td>In-app messages between students and families</td>
+          <td>Sent through the platform</td>
+        </tr>
+        <tr>
+          <td><strong>Location data</strong></td>
+          <td>General location (zip code) used for job distance calculations. Precise GPS is optional.</td>
+          <td>You provide or grant permission</td>
+        </tr>
+        <tr>
+          <td><strong>Device data</strong></td>
+          <td>Push notification token, device OS version</td>
+          <td>Collected automatically when you register for notifications</td>
+        </tr>
+        <tr>
+          <td><strong>Usage data</strong></td>
+          <td>App interactions, error logs</td>
+          <td>Collected automatically</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Operate and improve the Assistly platform</li>
+      <li>Verify that students hold valid @ihsd.us school email addresses</li>
+      <li>Match students with family job postings by location and category</li>
+      <li>Deliver push notifications about job activity, messages, and platform updates</li>
+      <li>Send transactional emails (account confirmation, application updates)</li>
+      <li>Send occasional founder-voice emails for users who have not yet completed a job (opt-out available by replying to any email)</li>
+      <li>Maintain safety, detect fraud, and enforce our Terms of Service</li>
+      <li>Provide parental monitoring features to linked family accounts</li>
+    </ul>
+
+    <h2>3. Children's Privacy (COPPA)</h2>
+    <p>Assistly is available to users as young as 13 years old. We do not knowingly collect personal information from children under 13. If we learn that we have collected information from a child under 13 without verifiable parental consent, we will delete it promptly.</p>
+    <p>For users between 13 and 17 years old:</p>
+    <ul>
+      <li>We collect only the minimum information necessary to operate the platform.</li>
+      <li>We do not sell or share personal information of minors with third parties for advertising purposes.</li>
+      <li>Parents or guardians may request access to, correction of, or deletion of their child's information by emailing <a href="mailto:support@assistlyconnect.org">support@assistlyconnect.org</a>.</li>
+      <li>The optional parental monitoring feature allows a linked family account to view a student's message history. Students must confirm the link before monitoring begins.</li>
+    </ul>
+
+    <h2>4. How We Share Your Information</h2>
+    <p>We do not sell your personal information. We share information only in the following circumstances:</p>
+    <ul>
+      <li><strong>With other users:</strong> Your public profile (name, photo, rating, skills, bio) is visible to other approved users on the platform. Your address and contact details are never shared publicly.</li>
+      <li><strong>Service providers:</strong> We use third-party providers to operate the platform, including Supabase (database and authentication), Render (hosting), Resend (transactional email), and Apple Push Notification Service / Firebase (push notifications). These providers process data only on our behalf.</li>
+      <li><strong>Safety and legal compliance:</strong> We may disclose information if required by law, to protect the safety of a user or the public, or to respond to a valid legal request.</li>
+      <li><strong>Business transfers:</strong> In the event of a merger or acquisition, your information may be transferred. You will be notified before any such transfer occurs.</li>
+    </ul>
+
+    <h2>5. Data Storage and Security</h2>
+    <p>Your data is stored on servers located in the United States. We use industry-standard security measures, including encrypted connections (HTTPS/TLS), hashed passwords, and access controls. However, no system is completely secure, and we cannot guarantee absolute security.</p>
+    <p>We retain your account information for as long as your account is active. If you delete your account, we remove your personal data within 30 days, except where required by law to retain it longer.</p>
+
+    <h2>6. Push Notifications</h2>
+    <p>If you grant permission, Assistly sends push notifications about job activity, new messages, and application updates. You can disable push notifications at any time through your device's system settings or within the Assistly app.</p>
+
+    <h2>7. Your Rights</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> the personal information we hold about you</li>
+      <li><strong>Correct</strong> inaccurate information through the app's Edit Profile feature</li>
+      <li><strong>Delete</strong> your account and associated data at any time through the app (Settings → Delete Account)</li>
+      <li><strong>Opt out</strong> of non-transactional emails by replying to any email with "unsubscribe"</li>
+      <li><strong>Request a copy</strong> of your data by emailing <a href="mailto:support@assistlyconnect.org">support@assistlyconnect.org</a></li>
+    </ul>
+    <p>If you are a California resident, you may have additional rights under the California Consumer Privacy Act (CCPA). Contact us to exercise those rights.</p>
+
+    <h2>8. Cookies and Tracking</h2>
+    <p>The Assistly website uses minimal cookies necessary to operate the site. We do not use third-party advertising trackers, behavioral profiling, or cross-site tracking technologies.</p>
+
+    <h2>9. Third-Party Links</h2>
+    <p>The platform may contain links to third-party websites or services. This Privacy Policy does not apply to those third parties, and we are not responsible for their privacy practices.</p>
+
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you through the app or by email, and update the "Last updated" date above. Your continued use of Assistly after changes are posted constitutes acceptance of the revised policy.</p>
+
+    <h2>11. Contact Us</h2>
+    <p>Questions, requests, or concerns about this Privacy Policy? Contact us at:</p>
+    <p>
+      <strong>Assistly</strong><br>
+      <a href="mailto:support@assistlyconnect.org">support@assistlyconnect.org</a><br>
+      assistlyconnect.org
+    </p>
+
+  </div>
+</div>
+
+<footer>
+  <p class="footer-copy">© 2026 Assistly · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></p>
+</footer>
+
+</body>
+</html>
