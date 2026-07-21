@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Students · Assistly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+
+h1 { font-size: clamp(32px, 4.5vw, 52px); font-weight: 600; line-height: 1.1; letter-spacing: -0.3px; max-width: 620px; margin-bottom: 16px; }
+
+/* ─── Benefits ─────────────────────────────────── */
+.benefits-section { padding: 76px 40px; border-bottom: 1px solid var(--line); }
+.benefits-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.benefits-inner h2 { font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.2px; margin-bottom: 22px; }
+.benefits-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.benefits-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--ink-2); line-height: 1.6; }
+.benefits-list li svg { width: 16px; height: 16px; color: var(--red); flex-shrink: 0; margin-top: 2px; }
+.benefits-panel { background: var(--ink); border-radius: 12px; padding: 36px 32px; }
+.benefits-panel-tag { font-size: 11px; font-weight: 600; letter-spacing: 1.1px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+.benefits-panel h3 { font-family: "Fraunces", serif; font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.2px; margin-bottom: 12px; line-height: 1.2; }
+.benefits-panel p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 24px; }
+.benefits-panel .btn { width: 100%; justify-content: center; }
+
+/* ─── Steps for you ─────────────────────────────── */
+.steps-section { padding: 76px 40px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.steps-inner { max-width: var(--max); margin: 0 auto; }
+.steps-header { margin-bottom: 40px; }
+.steps-header h2 { font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.2px; }
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; }
+.step-n { font-family: "Fraunces", serif; font-size: 28px; font-weight: 500; color: var(--red); margin-bottom: 8px; line-height: 1; }
+.step h4 { font-size: 14.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; letter-spacing: 0; }
+.step p { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+
+/* ─── CTA ──────────────────────────────────────── */
+.cta-section { padding: 92px 40px; background: var(--ink); }
+.cta-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+.cta-inner .label { color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+.cta-inner h2 { color: #fff; margin-bottom: 14px; font-size: clamp(28px, 3.8vw, 44px); letter-spacing: -0.3px; }
+.cta-inner p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 34px; }
+
+@media (max-width: 860px) {
+  .benefits-section { padding: 56px 20px; }
+  .benefits-inner { grid-template-columns: 1fr; gap: 36px; }
+  .steps-section { padding: 56px 20px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .cta-section { padding: 64px 20px; }
+}
+@media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">
+    <img src="assets/logo.png" alt="Assistly" class="nav-logo">
+  </a>
+  <div class="nav-links">
+    <a href="how-it-works.html" class="nav-link">How it works</a>
+    <a href="students.html" class="nav-link active">Students</a>
+    <a href="families.html" class="nav-link">Families</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="signup.html" class="nav-cta">Join the pilot</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div style="border-bottom: 1px solid var(--line);">
+  <div class="page-header">
+    <p class="label">For students</p>
+    <h1>Earn on your own schedule.</h1>
+    <p>Do work you're already capable of, for neighbors you already share a community with. Build a profile, earn real income, and gain experience around your school and extracurricular schedule.</p>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="benefits-section">
+  <div class="benefits-inner">
+    <div>
+      <h2>Why students join Assistly.</h2>
+      <ul class="benefits-list">
+        <li>
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+          Sign up with your @ihsd.us email — no separate application
+        </li>
+        <li>
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+          Browse tasks that fit your skills and schedule
+        </li>
+        <li>
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+          Work with background-checked, vetted families
+        </li>
+        <li>
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+          Build a profile and earn reviews as you go
+        </li>
+        <li>
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M1 7.5l4 4L13 2.5"/></svg>
+          Get paid directly — cash, Venmo, or Zelle
+        </li>
+      </ul>
+    </div>
+    <div class="benefits-panel">
+      <p class="benefits-panel-tag">Founding Pilot Program</p>
+      <h3>Early access, before the public launch.</h3>
+      <p>Student helpers who join the pilot get first access to participating Indian Hill families and job opportunities, plus a direct voice in shaping features before Assistly officially launches.</p>
+      <a href="signup.html" class="btn btn-red">Sign up as a student →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS FOR YOU -->
+<section class="steps-section">
+  <div class="steps-inner">
+    <div class="steps-header">
+      <p class="label">Getting started</p>
+      <h2>Four steps to your first job.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">01</div>
+        <h4>Sign up</h4>
+        <p>Create your account with your @ihsd.us email. An admin reviews and approves it.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <h4>Browse tasks</h4>
+        <p>See open jobs from background-checked Indian Hill families near you.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <h4>Apply and match</h4>
+        <p>Apply to tasks that fit your schedule. When a family selects you, messaging opens.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <h4>Do the job, get paid</h4>
+        <p>Complete the task and arrange payment directly with the family.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="label">Pilot Program</p>
+    <h2>Be one of our first 50 student helpers.</h2>
+    <p>Free to join, no fees ever — and a direct say in how Assistly gets built.</p>
+    <a href="signup.html" class="btn btn-red">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 1v12M1 7l6-6 6 6"/></svg>
+      Sign up as a student
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-brand">
+      <div class="footer-logo-wrap">
+        <img src="assets/logo.png" alt="Assistly" class="footer-logo">
+      </div>
+      <span class="footer-name">Assistly</span>
+    </a>
+    <div class="footer-links">
+      <a href="how-it-works.html" class="footer-link">How it works</a>
+      <a href="students.html" class="footer-link">Students</a>
+      <a href="families.html" class="footer-link">Families</a>
+      <a href="about.html" class="footer-link">About</a>
+      <a href="terms.html" class="footer-link">Terms</a>
+      <a href="privacy.html" class="footer-link">Privacy</a>
+      <a href="mailto:support@assistlyconnect.org" class="footer-link">Contact</a>
+    </div>
+    <p class="footer-copy">
+      © 2026 Assistly · Indian Hill High School District · AssistlyConnect.org
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
